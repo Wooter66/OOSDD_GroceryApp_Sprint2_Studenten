@@ -37,7 +37,7 @@ namespace Grocery.App.ViewModels
             AvailableProducts.Clear();
             foreach (Product P in _productService.GetAll())
                 if (P.Stock > 0 && !MyGroceryListItems.Any(g => g.ProductId == P.Id))
-                    AvailableProducts.Add(P);       
+                    AvailableProducts.Add(P);     
         }
 
         partial void OnGroceryListChanged(GroceryList value)
@@ -51,7 +51,6 @@ namespace Grocery.App.ViewModels
             Dictionary<string, object> paramater = new() { { nameof(GroceryList), GroceryList } };
             await Shell.Current.GoToAsync($"{nameof(ChangeColorView)}?Name={GroceryList.Name}", true, paramater);
         }
-
         [RelayCommand]
         public void AddProduct(Product product)
         {
